@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleFactoryOfConsoleBeta", "BattleFactoryOfConsoleBeta\BattleFactoryOfConsoleBeta.csproj", "{A50D8B9F-FF4C-41F8-B0D5-F2E8EFA10C17}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A50D8B9F-FF4C-41F8-B0D5-F2E8EFA10C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A50D8B9F-FF4C-41F8-B0D5-F2E8EFA10C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A50D8B9F-FF4C-41F8-B0D5-F2E8EFA10C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A50D8B9F-FF4C-41F8-B0D5-F2E8EFA10C17}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {795D5446-A375-4163-AD93-73E794035644}
+	EndGlobalSection
+EndGlobal
