@@ -16,5 +16,13 @@ namespace BattleOfConsole
         public static bool Recoil { get; set; } = false;
 
         public static bool MineStealthRock { get; set; } = false;
+
+        public static bool MineLightScreen { get; set; } = false;
+
+        public static int LightScreenCounter { get; set; } = 0;
+
+        public static bool MineReflect { get; set; } = false;
+        public static int ReflectCounter { get; set; } = 0;
+
     }
 }

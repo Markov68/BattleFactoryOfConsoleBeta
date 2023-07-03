@@ -8,9 +8,9 @@
 
         
 
-        public override void BeforeDamageEffect(Pokemon pokemon, Pokemon target, double damage)
+        public override void BeforeDamageEffect(Pokemon pokemon, Pokemon target, ref double damage)
         {
-            base.BeforeDamageEffect(pokemon, target, damage);
+            base.BeforeDamageEffect(pokemon, target, ref damage);
             {
                 if ((pokemon.IH == pokemon.InitialIH) && (pokemon.IH <= damage))
                 {

@@ -47,6 +47,14 @@ namespace BattleOfConsole
 
         public static bool AIStealthRock { get; set; } = false;
 
+        public static bool AILightScreen { get; set; } = false;
+
+        public static int LightScreenCounter { get; set; } = 0;
+
+        public static bool AIReflect { get; set; } = false;
+
+        public static int ReflectCounter { get; set; } = 0;
+
         public AINames GetRandomAIName()
         {
             Random random = new Random();
@@ -102,6 +110,14 @@ namespace BattleOfConsole
                     if (pokemon.HaveItem.Name == "とつげきチョッキ")
                     {
                         if (pokemon.SelectedSkill.Kinds == Skill.Kind.change)
+                        {
+                            continue;
+                        }
+                    }
+
+                    if(pokemon.Taunt == true) 
+                    {
+                        if(pokemon.SelectedSkill.Kinds == Skill.Kind.change) 
                         {
                             continue;
                         }

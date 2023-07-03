@@ -10,9 +10,9 @@ namespace BattleOfConsole
     {
         public string Name { get; set; }
 
-        public Type.Types TypeEnhance { get; set; }
+        public Type.Types TypeEnhance { get; set; } = Type.Types.None;
 
-        public double TypeEnhanceCounter { get; set; } = 1;
+        public static double TypeEnhanceCounter { get; set; } = 1;
 
         public Ability(string name) 
         {

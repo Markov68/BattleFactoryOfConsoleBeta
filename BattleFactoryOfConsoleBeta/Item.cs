@@ -17,9 +17,9 @@ namespace BattleOfConsole
 
         public double ItemDamageEffect { get; set; } = 1;
 
-        public Type.Types TypeEnhance { get; set; }
+        public Type.Types TypeEnhance { get; set; } = Type.Types.None;
 
-        public double TypeEnhanceCounter { get; set; } = 1;
+        public static double TypeEnhanceCounter { get; set; } = 1;
 
         public bool IHMaxToZero { get; set; } = false;
 
@@ -33,6 +33,10 @@ namespace BattleOfConsole
         }
 
         public virtual void BeforeDamageEffect(Pokemon pokemon,Pokemon target,double damage) 
+        {
+        }
+
+        public virtual void BeforeDamageEffect(Pokemon pokemon, Pokemon target, ref double damage)
         {
         }
         public virtual void AfterDamageEffect(Pokemon pokemon,Pokemon target,double damage) 

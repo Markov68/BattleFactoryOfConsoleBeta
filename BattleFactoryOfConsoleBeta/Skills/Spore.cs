@@ -8,9 +8,9 @@ using System.Xml.Linq;
 
 namespace BattleOfConsole.Skills
 {
-    internal class Hypnosis : Skill
+    internal class Spore : Skill
     {
-        public Hypnosis() :base("さいみんじゅつ", Type.Types.Psy, Kind.change, 0, 20, 60,0,false) 
+        public Spore() :base("キノコのほうし", Type.Types.Leaf, Kind.change, 0, 15, 100,0,false) 
         {
         }
 
@@ -27,6 +27,10 @@ namespace BattleOfConsole.Skills
                 else if((Field.CurrentField == Field.Fields.ElecField) || (Field.CurrentField == Field.Fields.MistField)) 
                 {
                     Console.WriteLine($"フィールドのこうかでねむらない!");
+                }
+                else if((target.Type1 == Type.Types.Leaf) || (target.Type2 == Type.Types.Leaf)) 
+                {
+                    Console.WriteLine($"{target.Name}にはこうかがないようだ");    
                 }
                 else 
                 {

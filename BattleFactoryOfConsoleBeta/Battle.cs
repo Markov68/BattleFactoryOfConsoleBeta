@@ -19,10 +19,10 @@ namespace BattleOfConsole
             Field.FieldEffect(selectedskill, field);
             Weather.WheatherEffect(selectedskill, weather);
             attack.HaveItem.ItemEffect(attack,target,selectedskill);
-            attack.Abilities.AbilityEffect(attack, target);
             Type.CollectSkillType(attack, selectedskill);
-            type.TypeEnhanceDamage(attack);
+            Type.TypeEnhanceDamage(attack);
             check.BurnCheck(attack);
+            attack.Abilities.AbilityEffect(attack, target);
             Console.WriteLine($"{attack.Name}の{selectedskill.Name}!!");
             var hitRateNum = r.Next(1, 101);
             var damegeRandom = Math.Round(r.NextDouble() * 0.15 + 0.85, 2);
@@ -37,8 +37,8 @@ namespace BattleOfConsole
             {
                 if (selectedskill.Kinds == Skill.Kind.attack)
                 {
-                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IA / target.IB) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * attack.Abilities.TypeEnhanceCounter * attack.HaveItem.TypeEnhanceCounter * damegeRandom * attack.BurnGainIA;
-                    target.HaveItem.BeforeDamageEffect(target, attack, damage);
+                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IA / target.IB) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * attack.BurnGainIA;
+                    target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
                     target.IH -= (int)damage;
                     intDamage = (int)damage;
                     if ((type.EffectivCounter == 2) || (type.EffectivCounter == 4))
@@ -52,7 +52,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack,target);
+                        attack.HaveItem.ItemCounterEffect(attack,target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -73,7 +73,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack, target);
+                        attack.HaveItem.ItemCounterEffect(attack, target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -98,7 +98,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack, target);
+                        attack.HaveItem.ItemCounterEffect(attack, target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -110,7 +110,7 @@ namespace BattleOfConsole
                 }
                 else if (selectedskill.Kinds == Skill.Kind.cattack)
                 {
-                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IC / target.ID) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * attack.Abilities.TypeEnhanceCounter * attack.HaveItem.TypeEnhanceCounter * damegeRandom;
+                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IC / target.ID) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom;
                     target.HaveItem.BeforeDamageEffect(target, attack, damage);
                     target.IH -= (int)damage;
                     intDamage = (int)damage;
@@ -125,7 +125,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack, target);
+                        attack.HaveItem.ItemCounterEffect(attack, target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -146,7 +146,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack, target);
+                        attack.HaveItem.ItemCounterEffect(attack, target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -171,7 +171,7 @@ namespace BattleOfConsole
                         Thread.Sleep(1000);
                         target.Abilities.AfterDamageEffect(target, attack,damage);
                         Thread.Sleep(1000);
-                        target.HaveItem.ItemCounterEffect(attack, target);
+                        attack.HaveItem.ItemCounterEffect(attack, target);
                         Thread.Sleep(1000);
                         target.HaveItem.ItemCounterEffect(target, attack);
                         Thread.Sleep(1000);
@@ -200,7 +200,7 @@ namespace BattleOfConsole
                     Thread.Sleep(2000);
                     selectedskill.ChangeSkillEffect(attack, target, weather);
                     Thread.Sleep(1000);
-                    target.HaveItem.ItemCounterEffect(attack, target);
+                    attack.HaveItem.ItemCounterEffect(attack, target);
                     Thread.Sleep(1000);
                     target.HaveItem.ItemCounterEffect(target, attack);
                     Thread.Sleep(1000);

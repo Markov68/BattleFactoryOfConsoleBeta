@@ -198,6 +198,12 @@ namespace BattleOfConsole
 
         public bool Confusion { get; set; } = false;
 
+        public bool LeechSeed { get; set; } = false;
+
+        public bool Taunt { get; set; } = false;
+
+        public int TauntCount { get; set; }
+
         public int ToxicCount { get; set; } = 0;
 
         public int SleepCount { get; set; } = 0;
@@ -206,7 +212,7 @@ namespace BattleOfConsole
 
         public int YawnCount { get; set; } = -1;
 
-        public bool IHMAXToZero { get; set; } 
+        public bool IHMAXToZero { get; set; } = true;
 
         public double BurnGainIA { get; set; } = 1;
 
@@ -285,7 +291,7 @@ namespace BattleOfConsole
             Skills.Add(skill);
         }
 
-        public void EndTurnStateEffect(Pokemon pokemon) 
+        public void EndTurnStateEffect(Pokemon pokemon,Pokemon target) 
         {
             Check check = new Check();
             if(pokemon.State == Statements.Burn) 
@@ -306,6 +312,24 @@ namespace BattleOfConsole
                 Console.WriteLine($"{pokemon.Name}はもうどくにおかされている!");
                 check.CheckIH(pokemon);
                 pokemon.ToxicCount++;
+            }
+            if(pokemon.LeechSeed == true) 
+            {
+                double damage = pokemon.InitialIH / 8;
+                pokemon.IH -= (int)damage;
+                target.IH += (int)damage;
+                Console.WriteLine($"{target.Name}はやどりぎのタネで{pokemon.Name}のたいりょくをすいとった!");
+                check.CheckIH(pokemon);
+                check.CheckIH(target);
+            }
+            if (pokemon.Taunt == true) 
+            {
+                pokemon.TauntCount--;
+                if(pokemon.TauntCount == 0) 
+                {
+                    pokemon.Taunt = false;
+                    Console.WriteLine($"{pokemon.Name}のちょうはつのこうかがきれた");
+                }
             }
         }
 

@@ -30,6 +30,10 @@ namespace BattleOfConsole.Skills
                         Weather.WeatherCount = 0;
                     }
                 }
+                else 
+                {
+                    Console.WriteLine("しかしうまくきまらなかった!");
+                }
             }
         }
     }

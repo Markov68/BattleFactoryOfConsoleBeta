@@ -21,6 +21,18 @@ namespace BattleOfConsole.Skills
                 {
                     Console.WriteLine("あめがふりはじめた!");
                     Weather.SetWeather(Weather.Weathers.Rain);
+                    if (pokemon.HaveItem.Name == "しめったいわ")
+                    {
+                        Weather.WeatherCount = -3;
+                    }
+                    else
+                    {
+                        Weather.WeatherCount = 0;
+                    }
+                }
+                else 
+                {
+                    Console.WriteLine("しかしうまくきまらなかった!");
                 }
             }
         }

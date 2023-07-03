@@ -49,6 +49,12 @@ namespace BattleOfConsole
                 target.HaveItem = target.InitialHaveItem;
                 target.Abilities = target.InitialAbilities;
                 target.Fainted = false;
+                target.LeechSeed = false;
+                target.Taunt = false;
+                target.SelectLockSkill = null;
+                target.Confusion = false;
+                target.ToxicCount = 0;
+                target.YawnCount = -1;
             }
         }
 
@@ -58,8 +64,6 @@ namespace BattleOfConsole
             AI.TradeSkip = false;
             BattleField.MyPokemon.HaveItem.IHMaxToZero = false;
             BattleField.OppPokemon.HaveItem.IHMaxToZero = false;
-            BattleField.MyPokemon.Confusion = false;
-            BattleField.OppPokemon.Confusion = false;
             BattleField.MyPokemon.Flinch = false;
             BattleField.OppPokemon.Flinch = false;
             BattleField.MyPokemon.TurnSkip = false;
@@ -74,6 +78,10 @@ namespace BattleOfConsole
             Weather.WeatherCount = 0;
             Mine.MineStealthRock = false;
             AI.AIStealthRock = false;
+            Mine.MineLightScreen = false;
+            Mine.MineReflect = false;
+            AI.AILightScreen = false;
+            AI.AIReflect = false;
         }
 
         public void InitialRankReset() 

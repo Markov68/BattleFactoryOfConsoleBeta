@@ -16,7 +16,7 @@ namespace BattleOfConsole.Skills
         {
             Random r = new Random();
             var random = r.Next(1, 101);
-            if ((target.State == Pokemon.Statements.None)　&& ((target.Type1 != Type.Types.Poison) || (target.Type2 != Type.Types.Poison)))
+            if ((target.State == Pokemon.Statements.None)　&& ((target.Type1 != Type.Types.Poison) && (target.Type2 != Type.Types.Poison)))
             {
                 if (random <= 30)
                 {

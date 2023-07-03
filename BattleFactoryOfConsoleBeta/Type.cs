@@ -278,33 +278,34 @@ namespace BattleOfConsole
             }
         }
 
-        public void TypeEnhanceDamage(Pokemon pokemon) 
+        public static void TypeEnhanceDamage(Pokemon pokemon) 
         {
             if(pokemon.SelectedSkill.SkillType == pokemon.Abilities.TypeEnhance) 
             {
-                pokemon.Abilities.TypeEnhanceCounter = 1.5; 
+                Ability.TypeEnhanceCounter = 1.5; 
             }
             else
             {
-                pokemon.Abilities.TypeEnhanceCounter = 1;
+                Ability.TypeEnhanceCounter = 1;
             }
             if(pokemon.SelectedSkill.SkillType == pokemon.HaveItem.TypeEnhance) 
             {
                 if (pokemon.HaveItem.Name.Contains("プレート")) 
                 {
-                    pokemon.HaveItem.TypeEnhanceCounter = 1.2;
+                    Item.TypeEnhanceCounter = 1.2;
                 }
                 else if(pokemon.HaveItem.Name.Contains("ジュエル") && ((pokemon.SelectedSkill.Kinds == Skill.Kind.attack) || (pokemon.SelectedSkill.Kinds == Skill.Kind.cattack)))
                 {
                     NoneItem noneItem = new NoneItem();
-                    pokemon.HaveItem.TypeEnhanceCounter = 1.3;
-                    pokemon.HaveItem = noneItem;
                     Console.WriteLine($"{pokemon.Name}は{pokemon.HaveItem.Name}をつかった!");
+                    Item.TypeEnhanceCounter = 1.3;
+                    pokemon.HaveItem = noneItem;
+                    
                 }
             }
             else 
             {
-                pokemon.Abilities.TypeEnhanceCounter = 1;
+                Item.TypeEnhanceCounter = 1;
             }
         }
 

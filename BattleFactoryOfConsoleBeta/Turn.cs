@@ -235,6 +235,14 @@ namespace BattleOfConsole
                             continue;
                         }
                     }
+                    if (pokemon.Taunt == true)
+                    {
+                        if (pokemon.SelectedSkill.Kinds == Skill.Kind.change)
+                        {
+                            Console.WriteLine($"{pokemon.Name}はちょうはつされてへんかわざがだせない!");
+                            continue;
+                        }
+                    }
                     break;
                 }
             }
@@ -250,9 +258,9 @@ namespace BattleOfConsole
                 check.JudgeGameEnd();
                 BattleField.OppPokemon.HaveItem.EndTurnEffect(BattleField.OppPokemon,BattleField.MyPokemon);
                 check.JudgeGameEnd();
-                BattleField.MyPokemon.EndTurnStateEffect(BattleField.MyPokemon);
+                BattleField.MyPokemon.EndTurnStateEffect(BattleField.MyPokemon,BattleField.OppPokemon);
                 check.JudgeGameEnd();
-                BattleField.OppPokemon.EndTurnStateEffect(BattleField.OppPokemon);
+                BattleField.OppPokemon.EndTurnStateEffect(BattleField.OppPokemon,BattleField.MyPokemon);
                 check.JudgeGameEnd();
                 check.FieldWeatherCheck();
                 check.YawnCheck();
@@ -263,9 +271,9 @@ namespace BattleOfConsole
                 check.JudgeGameEnd();
                 BattleField.MyPokemon.HaveItem.EndTurnEffect(BattleField.MyPokemon, BattleField.OppPokemon);
                 check.JudgeGameEnd();
-                BattleField.OppPokemon.EndTurnStateEffect(BattleField.OppPokemon);
+                BattleField.OppPokemon.EndTurnStateEffect(BattleField.OppPokemon,BattleField.MyPokemon);
                 check.JudgeGameEnd();
-                BattleField.MyPokemon.EndTurnStateEffect(BattleField.MyPokemon);
+                BattleField.MyPokemon.EndTurnStateEffect(BattleField.MyPokemon,BattleField.OppPokemon);
                 check.JudgeGameEnd();
                 check.FieldWeatherCheck();
                 check.YawnCheck();

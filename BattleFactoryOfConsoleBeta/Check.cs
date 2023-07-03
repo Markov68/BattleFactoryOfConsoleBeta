@@ -297,6 +297,11 @@ namespace BattleOfConsole
                 pokemon.Flinch = false;
                 pokemon.TurnSkip = true;
             }
+            if ((pokemon.Taunt == true) && (pokemon.SelectedSkill.Kinds == Skill.Kind.change))
+            {
+                Console.WriteLine($"{pokemon.Name}はちょうはつされてわざがだせない!");
+                pokemon.TurnSkip = true;
+            }
             if ((pokemon.Confusion == true) && (pokemon.TurnSkip == false))
             {
                 pokemon.ConfusionCount--;
@@ -449,6 +454,44 @@ namespace BattleOfConsole
                 Console.WriteLine("もとのフィールドにもどった");
                 Field.CurrentField = Field.Fields.None;
                 Field.FieldCount = 0;
+            }
+
+            if(Mine.MineLightScreen == true) 
+            {
+                Mine.LightScreenCounter--;
+                if (Mine.LightScreenCounter == 0)
+                {
+                    Console.WriteLine("みかたのひかりのかべのこうかがきれた");
+                    Mine.MineLightScreen = false;
+                }
+            }
+            else if(AI.AILightScreen == true) 
+            {
+                AI.LightScreenCounter--;
+                if(AI.LightScreenCounter == 0) 
+                {
+                    Console.WriteLine("あいてのひかりのかべのこうかがきれた");
+                    AI.AILightScreen = false;
+                }
+            }
+
+            if (Mine.MineReflect == true)
+            {
+                Mine.ReflectCounter--;
+                if (Mine.ReflectCounter == 0)
+                {
+                    Console.WriteLine("みかたのリフレクターのこうかがきれた");
+                    Mine.MineReflect = false;
+                }
+            }
+            else if (AI.AIReflect == true)
+            {
+                AI.ReflectCounter--;
+                if (AI.ReflectCounter == 0)
+                {
+                    Console.WriteLine("あいてのリフレクターのこうかがきれた");
+                    AI.AIReflect = false;
+                }
             }
         }
 

@@ -2,9 +2,9 @@
 
 namespace BattleOfConsole.Abilities
 {
-    internal class SwiftSwim : Ability
+    internal class SandRush : Ability
     {
-        public SwiftSwim() : base("すいすい")
+        public SandRush() : base("すなかき")
         {
         }
 

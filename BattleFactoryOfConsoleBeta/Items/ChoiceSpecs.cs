@@ -10,9 +10,12 @@
         {
             base.ItemEffect(pokemon,target,selectskill);
             {
-                if((pokemon.SelectedSkill.Kinds == Skill.Kind.cattack) || (pokemon.SelectLockSkill.Kinds == Skill.Kind.cattack)) 
+                if(pokemon.SelectLockSkill != null) 
                 {
-                    ItemDamageEffect = 1.5;
+                    if ((pokemon.SelectedSkill.Kinds == Skill.Kind.cattack) || (pokemon.SelectLockSkill.Kinds == Skill.Kind.cattack))
+                    {
+                        ItemDamageEffect = 1.5;
+                    }
                 }
             }
         }
