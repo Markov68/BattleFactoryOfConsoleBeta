@@ -32,7 +32,9 @@ namespace BattleOfConsole
             Pokemon flareon1 = new Flareon1();
             Pokemon umbreon1 = new Umbreon1();
             Pokemon breloom1 = new Breloom1();
-
+            Pokemon drapion1 = new Drapion1();
+            Pokemon meowscarada1 = new Meowscarada1();
+            Pokemon scizor1 = new Scizor1();
 
             Battle battle = new Battle();
             Turn turn = new Turn();
@@ -42,7 +44,7 @@ namespace BattleOfConsole
 
             List<Pokemon> pokemonList = new List<Pokemon>()
             {
-                roaringMoon1 , lucario1 , tapukoko1 , ceruledge1 , garchomp1 , metagross1 , sylveon1 , tyranitar1 ,gyarados1, venusaur1 , gastrodon1 , staraptor1, salamence1 , politoed1 , torkoal1 , quaquaval1, pikachu1 , armarouge1 ,ironvaliant1, excadrill1, heatran1 , kingdra1 , nihilego1 , flareon1 , umbreon1 , breloom1 ,
+                roaringMoon1 , lucario1 , tapukoko1 , ceruledge1 , garchomp1 , metagross1 , sylveon1 , tyranitar1 ,gyarados1, venusaur1 , gastrodon1 , staraptor1, salamence1 , politoed1 , torkoal1 , quaquaval1, pikachu1 , armarouge1 ,ironvaliant1, excadrill1, heatran1 , kingdra1 , nihilego1 , flareon1 , umbreon1 , breloom1 , drapion1, meowscarada1 , scizor1, scizor1,
             };
 
             while (true)

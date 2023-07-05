@@ -14,7 +14,7 @@ namespace BattleOfConsole.Abilities
             {
                 if((pokemon.IH <= pokemon.InitialIH / 3) && (pokemon.SelectedSkill.SkillType == Type.Types.Leaf)) 
                 {
-                    Ability.AbilityEffectCount = 1.5;
+                    pokemon.Abilities.AbilityEffectCount = 1.5;
                 }
             }
         }

@@ -14,7 +14,7 @@ namespace BattleOfConsole.Abilities
             {
                 if((pokemon.State != Pokemon.Statements.None) && (pokemon.SelectedSkill.Kinds == Skill.Kind.attack))
                 {
-                    Ability.AbilityEffectCount = 1.5;
+                    pokemon.Abilities.AbilityEffectCount = 1.5;
                     pokemon.BurnGainIA = 1;
                 }
             }

@@ -1,8 +1,8 @@
 ﻿namespace BattleOfConsole.Items
 {
-    internal class MuscleBand:Item
+    internal class WiseGlasses:Item
     {
-        public MuscleBand() : base("ちからのハチマキ")
+        public WiseGlasses() : base("ものしりメガネ")
         { 
         }
 
@@ -10,7 +10,7 @@
         {
             base.ItemEffect(pokemon,target,selectskill);
             {
-                if (pokemon.SelectedSkill.Kinds == Skill.Kind.attack)
+                if (pokemon.SelectedSkill.Kinds == Skill.Kind.cattack)
                 {
                     pokemon.HaveItem.ItemDamageEffect = 1.1;
                 }

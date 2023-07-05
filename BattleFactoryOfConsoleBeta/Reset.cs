@@ -17,37 +17,116 @@ namespace BattleOfConsole
             pokemon.Confusion = false;
             pokemon.ToxicCount = 0;
             pokemon.YawnCount = -1;
+            pokemon.HaveItem.TypeEnhance = Type.Types.None;
             pokemon.Abilities.TypeEnhance = Type.Types.None;
+            pokemon.Type1 = pokemon.InitialType1;
+            pokemon.Type2 = pokemon.InitialType2;
             pokemon.Arank = 0;
             pokemon.Brank = 0;
             pokemon.Crank= 0;
             pokemon.Drank= 0;
             pokemon.Srank= 0;
-            pokemon.IA = pokemon.InitialIA;
-            pokemon.IB = pokemon.InitialIB;
-            pokemon.IC = pokemon.InitialIC;
-            pokemon.ID = pokemon.InitialID;
-            pokemon.IS = pokemon.InitialIS;
+            pokemon.CriticalHitStage = 0;
+            if(pokemon.InitialIA != pokemon.SubInitialIA) 
+            {
+                pokemon.IA = pokemon.SubInitialIA;
+            }
+            else
+            {
+                pokemon.IA = pokemon.InitialIA;
+            }
+            if(pokemon.InitialIB != pokemon.SubInitialIB) 
+            {
+                pokemon.IB = pokemon.SubInitialIB;
+            }
+            else 
+            {
+                pokemon.IB = pokemon.InitialIB;
+            }
+            if (pokemon.InitialIC != pokemon.SubInitialIC)
+            {
+                pokemon.IC = pokemon.SubInitialIC;
+            }
+            else
+            {
+                pokemon.IC = pokemon.InitialIC;
+            }
+            if (pokemon.InitialID != pokemon.SubInitialID)
+            {
+                pokemon.ID = pokemon.SubInitialID;
+            }
+            else
+            {
+                pokemon.ID = pokemon.InitialID;
+            }
+            if (pokemon.InitialIS != pokemon.SubInitialIS)
+            {
+                pokemon.IS = pokemon.SubInitialIS;
+            }
+            else
+            {
+                pokemon.IS = pokemon.InitialIS;
+            }
         }
         public void ResetPokeState(List<Pokemon> pokemon)
         {
             foreach (Pokemon target in pokemon)
             {
+                if (target.InitialIA != target.SubInitialIA)
+                {
+                    target.IA = target.SubInitialIA;
+                }
+                else
+                {
+                    target.IA = target.InitialIA;
+                }
+                if (target.InitialIB != target.SubInitialIB)
+                {
+                    target.IB = target.SubInitialIB;
+                }
+                else
+                {
+                    target.IB = target.InitialIB;
+                }
+                if (target.InitialIC != target.SubInitialIC)
+                {
+                    target.IC = target.SubInitialIC;
+                }
+                else
+                {
+                    target.IC = target.InitialIC;
+                }
+                if (target.InitialID != target.SubInitialID)
+                {
+                    target.ID = target.SubInitialID;
+                }
+                else
+                {
+                    target.ID = target.InitialID;
+                }
+                if (target.InitialIS != target.SubInitialIS)
+                {
+                    target.IS = target.SubInitialIS;
+                }
+                else
+                {
+                    target.IS = target.InitialIS;
+                }
                 target.IH = target.InitialIH;
-                target.IA = target.InitialIA;
-                target.IB = target.InitialIB;
-                target.IC = target.InitialIC;
-                target.ID = target.InitialID;
-                target.IS = target.InitialIS;
                 target.Arank = 0;
                 target.Brank = 0;
                 target.Crank = 0;
                 target.Drank = 0;
                 target.Srank = 0;
+                target.HaveItem.TypeEnhance = Type.Types.None;
                 target.Abilities.TypeEnhance = Type.Types.None;
                 target.State = Pokemon.Statements.None;
                 target.HaveItem = target.InitialHaveItem;
                 target.Abilities = target.InitialAbilities;
+                target.Type1 = target.InitialType1;
+                target.Type2 = target.InitialType2;
+                target.Flinch = false;
+                target.Recoil = false;
                 target.Fainted = false;
                 target.LeechSeed = false;
                 target.Taunt = false;
@@ -55,6 +134,7 @@ namespace BattleOfConsole
                 target.Confusion = false;
                 target.ToxicCount = 0;
                 target.YawnCount = -1;
+                target.CriticalHitStage = 0;
             }
         }
 

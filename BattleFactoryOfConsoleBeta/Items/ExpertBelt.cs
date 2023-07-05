@@ -14,7 +14,7 @@
                 type.TypeEffect(target, selectskill);
                 if(type.EffectivCounter >= 2) 
                 {
-                    ItemDamageEffect = 1.2;
+                    pokemon.HaveItem.ItemDamageEffect = 1.2;
                 }
             }
         }

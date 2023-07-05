@@ -15,6 +15,7 @@ namespace BattleOfConsole
 
         public void AttackPokemon(Pokemon attack, Pokemon target, Skill selectedskill, Field.Fields field, Weather.Weathers weather)
         {
+            double damage;
             type.TypeEffect(target, selectedskill);
             Field.FieldEffect(selectedskill, field);
             Weather.WheatherEffect(selectedskill, weather);
@@ -23,6 +24,7 @@ namespace BattleOfConsole
             Type.TypeEnhanceDamage(attack);
             check.BurnCheck(attack);
             attack.Abilities.AbilityEffect(attack, target);
+            attack.SelectedSkill.BeforeAttackEffect(attack, target);
             Console.WriteLine($"{attack.Name}の{selectedskill.Name}!!");
             var hitRateNum = r.Next(1, 101);
             var damegeRandom = Math.Round(r.NextDouble() * 0.15 + 0.85, 2);
@@ -37,10 +39,52 @@ namespace BattleOfConsole
             {
                 if (selectedskill.Kinds == Skill.Kind.attack)
                 {
-                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IA / target.IB) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * attack.BurnGainIA;
-                    target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
-                    target.IH -= (int)damage;
-                    intDamage = (int)damage;
+                    if((target == BattleField.MyPokemon) && (Mine.MineReflect == true)) 
+                    {
+                        Field.GainShield = 0.5;
+                    }
+                    else if((target == BattleField.OppPokemon) && (AI.AIReflect == true)) 
+                    {
+                        Field.GainShield = 0.5;
+                    }
+                    else 
+                    {
+                        Field.GainShield = 1;
+                    }
+
+                    if (check.CheckCriticalHit(attack) == true)
+                    {
+                        Thread.Sleep(2000);
+                        Console.WriteLine("きゅうしょにあたった!");
+                        if(attack.Arank < 0) 
+                        {
+                            attack.Arank = attack.InitialArank;
+                        }
+                        if(target.Brank > 0) 
+                        {
+                            target.Brank = target.InitialBrank;
+                        }
+                        damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IA / target.IB) / 50 + 2) * type.EffectivCounter * attack.Abilities.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * attack.BurnGainIA * 1.5;
+                        if(damage > target.IH) 
+                        {
+                            damage = target.IH;
+                        }
+                        target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
+                        target.IH -= (int)damage;
+                        check.CheckRankState(attack);
+                        check.CheckRankState(target);
+                    }
+                    else
+                    {
+                        damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IA / target.IB) / 50 + 2) * type.EffectivCounter * attack.Abilities.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * attack.BurnGainIA * Field.GainShield;
+                        if (damage > target.IH)
+                        {
+                            damage = target.IH;
+                        }
+                        target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
+                        target.IH -= (int)damage;
+                    }
+
                     if ((type.EffectivCounter == 2) || (type.EffectivCounter == 4))
                     {
                         Thread.Sleep(2000);
@@ -110,10 +154,50 @@ namespace BattleOfConsole
                 }
                 else if (selectedskill.Kinds == Skill.Kind.cattack)
                 {
-                    double damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IC / target.ID) / 50 + 2) * type.EffectivCounter * Ability.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom;
-                    target.HaveItem.BeforeDamageEffect(target, attack, damage);
-                    target.IH -= (int)damage;
-                    intDamage = (int)damage;
+                    if ((target == BattleField.MyPokemon) && (Mine.MineLightScreen == true))
+                    {
+                        Field.GainShield = 0.5;
+                    }
+                    else if ((target == BattleField.OppPokemon) && (AI.AILightScreen == true))
+                    {
+                        Field.GainShield = 0.5;
+                    }
+                    else 
+                    {
+                        Field.GainShield = 1;
+                    }
+                    if (check.CheckCriticalHit(attack) == true)
+                    {
+                        Thread.Sleep(2000);
+                        Console.WriteLine("きゅうしょにあたった!");
+                        if (attack.Crank < 0)
+                        {
+                            attack.Crank = attack.InitialCrank;
+                        }
+                        if (target.Drank > 0)
+                        {
+                            target.Drank = target.InitialDrank;
+                        }
+                        damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IC / target.ID) / 50 + 2) * type.EffectivCounter * attack.Abilities.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * 1.5;
+                        if (damage > target.IH)
+                        {
+                            damage = target.IH;
+                        }
+                        target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
+                        target.IH -= (int)damage;
+                        check.CheckRankState(attack);
+                        check.CheckRankState(target);
+                    }
+                    else
+                    {
+                        damage = (((2 * 100 / 5 + 2) * selectedskill.Impact * attack.IC / target.ID) / 50 + 2) * type.EffectivCounter * attack.Abilities.AbilityEffectCount * Weather.WeatherDamageEffect * Field.FieldDamageEffect * attack.HaveItem.ItemDamageEffect * Type.SkillTypeCollect * Ability.TypeEnhanceCounter * Item.TypeEnhanceCounter * damegeRandom * Field.GainShield;
+                        if (damage > target.IH)
+                        {
+                            damage = target.IH;
+                        }
+                        target.HaveItem.BeforeDamageEffect(target, attack, ref damage);
+                        target.IH -= (int)damage;
+                    }
                     if ((type.EffectivCounter == 2) || (type.EffectivCounter == 4))
                     {
                         Thread.Sleep(2000);

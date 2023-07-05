@@ -101,8 +101,15 @@ namespace BattleOfConsole
             Thread.Sleep(2000);
             Console.Clear();
             AI.RandomAIName = ai.GetRandomAIName();
-            Console.WriteLine($"ポケモントレーナーの{AI.RandomAIName}がしょうぶをしかけてきた！！");
-
+            if(AI.RandomAIName == AINames.ネジキ) 
+            {
+                AI.AiQuote(Mine.MyTeam);
+                Console.WriteLine($"バトルファクトリーの{AI.RandomAIName}がしょうぶをしかけてきた！！");
+            }
+            else 
+            {
+                Console.WriteLine($"ポケモントレーナーの{AI.RandomAIName}がしょうぶをしかけてきた！！");
+            }
             Thread.Sleep(2000);
             Console.WriteLine($"{AI.RandomAIName}は{target.Name}をくりだした!!");
             Thread.Sleep(2000);
@@ -252,6 +259,8 @@ namespace BattleOfConsole
         public void EndTurn() 
         {
             Check check = new Check();
+            BattleField.MyPokemon.CriticalHitStage = 0;
+            BattleField.OppPokemon.CriticalHitStage = 0;
             if (check.SpeedCheck(BattleField.MyPokemon,BattleField.OppPokemon) == 1) 
             {
                 BattleField.MyPokemon.HaveItem.EndTurnEffect(BattleField.MyPokemon,BattleField.OppPokemon);

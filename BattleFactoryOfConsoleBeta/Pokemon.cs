@@ -1,5 +1,6 @@
 ﻿using BattleOfConsole.Abilities;
 using BattleOfConsole.Items;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BattleOfConsole
 {
@@ -16,6 +17,8 @@ namespace BattleOfConsole
         int _srank;
         public string Name { get; set; }
         public int InitialIH { get; set; }
+
+        public int SubInitialIH { get; set; }
         public int IH
         {
             get
@@ -40,18 +43,28 @@ namespace BattleOfConsole
         }
 
         public int InitialIA { get; set; }
+
+        public int SubInitialIA { get; set; }
         public int IA { get; set; }
 
         public int InitialIB { get; set; }
+
+        public int SubInitialIB { get; set; }
         public int IB { get; set; }
 
         public int InitialIC { get; set; }
+
+        public int SubInitialIC { get; set; }
         public int IC { get; set; }
 
         public int InitialID { get; set; }
+
+        public int SubInitialID { get; set; }
         public int ID { get; set; }
 
         public int InitialIS { get; set; }
+
+        public int SubInitialIS { get; set; }
         public int IS { get; set; }
 
         public int Arank
@@ -177,6 +190,10 @@ namespace BattleOfConsole
 
         public Type.Types Type2 { get; set; }
 
+        public Type.Types InitialType1 {get;set;}
+
+        public Type.Types InitialType2 { get;set;}
+
         public List<Skill> Skills { get; set; }
 
         public Skill SelectedSkill { get; set; }
@@ -184,11 +201,13 @@ namespace BattleOfConsole
         public Skill? SelectLockSkill { get; set; }
         public Ability Abilities { get; set; }
 
-        public Item HaveItem { get; set; }　
+        public Item HaveItem { get; set; }
 
         public Ability InitialAbilities { get; set; }
 
         public Item InitialHaveItem { get; set; }
+
+        public int CriticalHitStage { get; set; } = 0;
 
         public Statements State { get; set; }
 
@@ -253,11 +272,22 @@ namespace BattleOfConsole
             InitialID = iD;
             InitialIS = iS;
 
+            SubInitialIH = iH;
+            SubInitialIA = iA;
+            SubInitialIB = iB;
+            SubInitialIC = iC;
+            SubInitialID = iD;
+            SubInitialIS = iS;
+            
+
             InitialArank = 0;
             InitialBrank = 0;
             InitialCrank = 0;
             InitialDrank = 0;
             InitialSrank = 0;
+
+            InitialType1 = type1;
+            InitialType2 = type2;
 
             Arank = 0;
             Brank = 0;
@@ -282,6 +312,8 @@ namespace BattleOfConsole
             InitialHaveItem = HaveItem;
             IHMAXToZero = true;
         }
+
+
 
       
 

@@ -11,9 +11,12 @@
             base.EndTurnEffect(pokemon, target);
             {
                 Check check = new Check();
-                pokemon.IH += pokemon.InitialIH / 16;
-                Console.WriteLine($"{pokemon.Name}は{pokemon.HaveItem.Name}でたいりょくをすこしかいふく");
-                check.CheckIH(pokemon);
+                if((pokemon.IH != pokemon.InitialIH) && (pokemon.IH != 0)) 
+                {
+                    pokemon.IH += pokemon.InitialIH / 16;
+                    Console.WriteLine($"{pokemon.Name}は{pokemon.HaveItem.Name}でたいりょくをすこしかいふく");
+                    check.CheckIH(pokemon);
+                }
             }
         }
 

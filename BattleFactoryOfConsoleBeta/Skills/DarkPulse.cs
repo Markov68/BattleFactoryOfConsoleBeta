@@ -2,7 +2,7 @@
 {
     internal class DarkPulse : Skill
     {
-        public DarkPulse() : base("あくのはどう", Type.Types.Fight, Kind.cattack, 80, 20, 1000, 0, false)
+        public DarkPulse() : base("あくのはどう", Type.Types.Dark, Kind.cattack, 80, 20, 1000, 0, false)
         {
         }
 

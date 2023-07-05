@@ -16,11 +16,7 @@ namespace BattleOfConsole.Skills
         {
             Check check = new Check();
             Random r = new Random();
-            if (target.Abilities.Name == "クリアボディ")
-            {
-                Console.WriteLine("クリアボディのこうかでのうりょくがさがらない!");
-            }
-            else if (target.Drank != -6 && (r.Next(1,101) <= 20))
+            if (target.Drank != -6 && (r.Next(1,101) <= 20) && (target.Abilities.Name == "クリアボディ")) 
             {
                 target.Drank -= 1;
                 check.CheckRankState(target);

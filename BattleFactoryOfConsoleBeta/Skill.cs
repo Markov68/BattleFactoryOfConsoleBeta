@@ -62,6 +62,10 @@ namespace BattleOfConsole
         public virtual void BeforedamageEffect(Pokemon pokemon, Pokemon target)
         { 
         }
+
+        public virtual void BeforeAttackEffect(Pokemon pokemon,Pokemon target)
+        {
+        }
         public virtual void AfterDamageEffect(Pokemon pokemon,Pokemon target,double damage) 
         {
         }

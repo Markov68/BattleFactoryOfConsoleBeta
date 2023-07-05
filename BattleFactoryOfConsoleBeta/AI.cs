@@ -30,11 +30,14 @@ namespace BattleOfConsole
             ユウキ,
             アイリス,
             レッド,
+            グリーン,
+            ブルー,
             ココ,
             シロナ,
             ダイゴ,
             ミクリ,
-            ターナー
+            ターナー,
+            ネジキ,
         }
 
         public static AINames RandomAIName { get; set; }
@@ -60,7 +63,45 @@ namespace BattleOfConsole
             Random random = new Random();
             int randomIndex = random.Next(0, Enum.GetValues(typeof(AINames)).Length);
             AINames randomName = (AINames)randomIndex;
+            if(((Turn.wincount == 6) || (Turn.wincount == 13)) && (randomName == AINames.ネジキ)) 
+            {
+                randomName = (AINames)randomIndex - random.Next(1, 10);
+            }
+            else if((Turn.wincount == 0) || (Turn.wincount == 13)) 
+            {
+                randomName = AINames.ネジキ;
+            }
             return randomName;
+        }
+
+        public static void AiQuote(List<Pokemon> pokemonlist) 
+        {
+            Random r = new Random();
+            Console.WriteLine("ジーーーーーー!");
+            Thread.Sleep(2000);
+            Console.WriteLine("あ　きにしないで　ください");
+            Thread.Sleep(2000);
+            Console.WriteLine("ぼくが　つかっているのは");
+            Thread.Sleep(2000);
+            Console.WriteLine("ちょうさ・ぶんせきマシン　ですから");
+            Thread.Sleep(2000);
+            Console.WriteLine("なるほど!");
+            Thread.Sleep(2000);
+            Console.WriteLine("きみが　レンタルしたのは");
+            Thread.Sleep(2000);
+            Console.WriteLine($"{pokemonlist[0].Name} {pokemonlist[1].Name} {pokemonlist[2].Name}");
+            Thread.Sleep(2000);
+            Console.WriteLine("なるほど　いいくみあわせだな～");
+            Thread.Sleep(2000);
+            Console.WriteLine("むー　そーだなー");
+            Thread.Sleep(2000);
+            Console.WriteLine($"{r.Next(1,100)}パーセント　ってトコ?");
+            Thread.Sleep(2000);
+            Console.WriteLine("あ、いまのすうじは　きにしないで!");
+            Thread.Sleep(2000);
+            Console.WriteLine("んじゃ　いきまーす!!");
+            Thread.Sleep(2000);
+            Console.Clear();
         }
 
 
@@ -68,11 +109,9 @@ namespace BattleOfConsole
         {
             Random r = new Random();
             Type type = new Type();
-            Check check = new Check();
-            BattleField field = new BattleField();
             
             var oppselectedSkillindex = r.Next(0, 4);
-            if(Turn.wincount < 15) 
+            if((Turn.wincount < 15) || (RandomAIName != AINames.ネジキ))
             {
                 while (true)
                 {

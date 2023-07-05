@@ -275,6 +275,16 @@ namespace BattleOfConsole
                     }
                 }
 
+                if((target.HaveItem.Name == "ふうせん") && (selectedSkill.SkillType == Types.Grand)) 
+                {
+                    EffectivCounter = 0;
+                }
+
+                if((target.Abilities.Name == "ふゆう") && (selectedSkill.SkillType == Types.Grand)) 
+                {
+                    EffectivCounter = 0;
+                }
+
             }
         }
 

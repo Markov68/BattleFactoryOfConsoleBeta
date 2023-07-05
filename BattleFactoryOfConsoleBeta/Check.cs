@@ -521,6 +521,56 @@ namespace BattleOfConsole
             }
         }
 
+        public bool CheckCriticalHit(Pokemon pokemon) 
+        {
+            Random r = new Random();
+            int CriticalHitCheck = r.Next(1, 25);
+            if (pokemon.CriticalHitStage == 3)
+            {
+                if (CriticalHitCheck <= 24)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if (pokemon.CriticalHitStage == 2)
+            {
+                if (CriticalHitCheck <= 12)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            if (pokemon.CriticalHitStage == 1) 
+            {
+                if (CriticalHitCheck <= 8)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else 
+            {
+                if (CriticalHitCheck <= 4)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public bool AllTeamPokemonFainted(List<Pokemon> team)
         {
             foreach (var pokemon in team)

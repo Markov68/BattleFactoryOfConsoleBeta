@@ -19,7 +19,7 @@ namespace BattleOfConsole
             Name = name;
         }
 
-        public static double AbilityEffectCount{ get; set; } = 1;
+        public double AbilityEffectCount{ get; set; } = 1;
 
         public virtual void FirstPutEffect(Pokemon pokemon,Pokemon target,Field.Fields field,Weather.Weathers wheather) 
         {
@@ -32,7 +32,7 @@ namespace BattleOfConsole
 
         public virtual void AbilityEffect(Pokemon pokemon, Pokemon target)
         {
-            Ability.AbilityEffectCount = 1;
+            pokemon.Abilities.AbilityEffectCount = 1;
         }
 
         public virtual void AttackFaintedEffect(Pokemon pokemon,Pokemon target) 

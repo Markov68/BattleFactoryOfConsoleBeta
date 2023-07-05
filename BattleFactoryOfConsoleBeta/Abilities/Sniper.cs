@@ -2,9 +2,9 @@
 
 namespace BattleOfConsole.Abilities
 {
-    internal class Technician : Ability
+    internal class Sniper : Ability
     {
-        public Technician() : base("テクニシャン")
+        public Sniper() : base("スナイパー")
         {
         }
 
@@ -12,10 +12,7 @@ namespace BattleOfConsole.Abilities
         {
             base.AbilityEffect(pokemon, target);
             {
-                if(pokemon.SelectedSkill.Impact <= 60) 
-                {
-                    pokemon.Abilities.AbilityEffectCount = 1.5;
-                }
+                pokemon.CriticalHitStage += 1;
             }
         }
 

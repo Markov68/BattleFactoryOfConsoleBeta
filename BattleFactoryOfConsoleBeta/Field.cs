@@ -27,6 +27,8 @@ namespace BattleOfConsole
 
         public static int FieldCount { get; set; } = 0;
 
+        public static double GainShield { get; set; } = 1;
+
         public Field()
         {
             CurrentField = Fields.None;

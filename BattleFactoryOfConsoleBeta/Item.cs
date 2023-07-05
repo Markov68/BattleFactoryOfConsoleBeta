@@ -25,7 +25,7 @@ namespace BattleOfConsole
 
         public virtual void ItemEffect(Pokemon pokemon,Pokemon target,Skill selectskill) 
         {
-            ItemDamageEffect = 1;
+            pokemon.HaveItem.ItemDamageEffect = 1;
         }
 
         public virtual void FirstPutEffect(Pokemon pokemon,Pokemon target) 

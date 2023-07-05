@@ -14,7 +14,7 @@
                 {
                     if ((pokemon.SelectedSkill.Kinds == Skill.Kind.attack) || (pokemon.SelectLockSkill.Kinds == Skill.Kind.attack))
                     {
-                        ItemDamageEffect = 1.5;
+                        pokemon.HaveItem.ItemDamageEffect = 1.5;
                     }
                 }
      
