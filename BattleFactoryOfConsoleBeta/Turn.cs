@@ -143,12 +143,12 @@ namespace BattleOfConsole
 
         public Pokemon StanbyTurn(Pokemon pokemon,Pokemon target,List<Pokemon> minepoke,Field.Fields field,Weather.Weathers weather) 
         {
+            if (TurnCount > 1)
+            {
+                Console.Clear();
+            }
             while (true)
             {
-                if (TurnCount > 1)
-                {
-                    Console.Clear();
-                }
                 //FieldState.CheckField();
                 Console.WriteLine("たたかう:0 ポケモン:1 フィールドのかくにん:2 てもちのかくにん:3");
                 if (int.TryParse(Console.ReadLine(), out var selectnum))

@@ -67,7 +67,7 @@ namespace BattleOfConsole
             {
                 randomName = (AINames)randomIndex - random.Next(1, 10);
             }
-            else if((Turn.wincount == 0) || (Turn.wincount == 13)) 
+            else if((Turn.wincount == 6) || (Turn.wincount == 13)) 
             {
                 randomName = AINames.ネジキ;
             }
