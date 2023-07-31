@@ -104,6 +104,8 @@ namespace BattleOfConsole
             Console.Clear();
         }
 
+        
+
 
         public void SelectSkillAi(Pokemon pokemon,Pokemon target) 
         {
@@ -111,7 +113,7 @@ namespace BattleOfConsole
             Type type = new Type();
             
             var oppselectedSkillindex = r.Next(0, 4);
-            if((Turn.wincount < 15) || (RandomAIName != AINames.ネジキ))
+            if((Turn.wincount < 7) || (RandomAIName != AINames.ネジキ))
             {
                 while (true)
                 {
